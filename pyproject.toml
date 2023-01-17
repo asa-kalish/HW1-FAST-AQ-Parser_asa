@@ -7,7 +7,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "seqparser"
-authors = [{name = “Asa Kalish”, email = “asa.kalish@ucsf.edu"}]
+authors = [{name = "Asa Kalish", email = "asa.kalish@ucsf.edu"}]
 readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
