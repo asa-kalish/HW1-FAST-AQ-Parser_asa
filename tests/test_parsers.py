@@ -29,7 +29,7 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
     data_dir = "HW1-FAST-AQ-Parser_asa/tests/data" #pathlib.Path(__file__).resolve().parent / "data"
-    fasta_file = data_dir / "test.fa"
+    fasta_file = data_dir + "test.fa"
 
     # Create instance of FastaParser        
     fasta_parser = FastaParser(fasta_file)
