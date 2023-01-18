@@ -57,7 +57,7 @@ def test_FastaParser():
     transcriptions = []
     for seq_name, seq in fasta_parser:
         print(seq_name, transcribe(seq))
-        transcriptions.append(transcribe(seq))
+        transcriptions.append(seq)
     # check file type and file content class/type (?)
     
     assert transcriptions[0] == groundtruth
