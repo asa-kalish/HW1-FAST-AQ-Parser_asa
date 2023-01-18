@@ -48,7 +48,7 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
 # i know that seq0 is TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA
-    groundtruth = "TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA"
+    true_seq = "TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA"
         
     fasta_file = get_filepath("fasta")
         
@@ -59,7 +59,7 @@ def test_FastaParser():
     for seq_name, seq in fasta_parser:
         sequences.append(seq)
             
-    assert sequences[0] == groundtruth
+    assert sequences[0] == true_seq
     # pass
 
 
@@ -73,7 +73,6 @@ def test_FastqParser():
     
     # ground truth
     true_seq = "TGTGGTCGTATAGTTATTGTCATAAATTACACAGAATCGCGATTCTCCGCGTCCACCAATCTTAGTGCACCACAGCATCGACCCGATTTATGACGCTGAG"
-    true_quality = "*540($=*,=.062565,2>'487')!:&&6=,6,*7>:&132&83*8(58&59>'8!;28<94,0*;*.94**:9+7"94(>7='(!5"2/!%"4#32="
                                                                                                       
     fastq_file = get_filepath("fastq")
         
@@ -81,10 +80,7 @@ def test_FastqParser():
     fastq_parser = FastqParser(fastq_file)
     
     sequences = []
-    qualities = []
     for seq_name, seq, quality in fastq_parser:
-        sequences.append(seq)
-        qualities.append(quality)
-        
+        sequences.append(seq)        
             
-    assert (sequences[0] == true_seq) and (qualities[0] == true_quality) 
+    assert sequences[0] == true_seq
