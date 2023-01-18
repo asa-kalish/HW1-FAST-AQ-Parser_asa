@@ -3,17 +3,39 @@ from seqparser import (
         FastqParser,
         transcribe,
         reverse_transcribe)
+import pathlib
 
-def main():
+def main(print_delim=True):
     """
     The main function
     """
+    
+    data_dir = pathlib.Path(__file__).resolve().parent / "data"
+    fasta_file = data_dir / "test.fa"
+    fastq_file = data_dir / "test.fq"
+
     # Create instance of FastaParser
     # Create instance of FastqParser
         
+    fasta_parser = FastaParser(fasta_file)
+    fastq_parser = FastqParser(fastq_file)
+    
     # For each record of FastaParser, Transcribe the sequence
     # and print it to console
-       
+    
+    delim = "-" * 50
+    delim = "\n" + delim + "\n"
+
+    fasta_file = fasta_file.name
+    fastq_file = fastq_file.name
+    
+    if print_delim:
+        print(delim + f"Transcribing FASTA: {fasta_file}\n")
+
+    for seq_name, seq in fasta_parser:
+        print(seq_name, transcribe(seq))
+        
+    
     # For each record of FastqParser, Transcribe the sequence
     # and print it to console
 
