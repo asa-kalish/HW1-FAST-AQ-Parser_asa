@@ -72,17 +72,19 @@ def test_FastqParser():
     """
     
     # ground truth
-    groundtruth = "TGTGGTCGTATAGTTATTGTCATAAATTACACAGAATCGCGATTCTCCGCGTCCACCAATCTTAGTGCACCACAGCATCGACCCGATTTATGACGCTGAG"
-    
+    true_seq = "TGTGGTCGTATAGTTATTGTCATAAATTACACAGAATCGCGATTCTCCGCGTCCACCAATCTTAGTGCACCACAGCATCGACCCGATTTATGACGCTGAG"
+    true_quality = "*540($=*,=.062565,2>'487')!:&&6=,6,*7>:&132&83*8(58&59>'8!;28<94,0*;*.94**:9+7"94(>7='(!5"2/!%"4#32="
+                                                                                                      
     fastq_file = get_filepath("fastq")
         
     # Create instance of FastqParser        
     fastq_parser = FastqParser(fastq_file)
     
     sequences = []
+    qualities = []
     for seq_name, seq, quality in fastq_parser:
         sequences.append(seq)
-        print(quality)
+        qualities.append(quality)
         
             
-    assert sequences[0] == groundtruth
+    assert (sequences[0] == true_seq) and (qualities[0] == true_quality) 
