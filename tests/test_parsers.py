@@ -80,7 +80,9 @@ def test_FastqParser():
     fastq_parser = FastqParser(fastq_file)
     
     sequences = []
-    for seq_name, seq in fastq_parser:
+    for seq_name, seq, quality in fastq_parser:
         sequences.append(seq)
+        print(quality)
+        
             
     assert sequences[0] == groundtruth
