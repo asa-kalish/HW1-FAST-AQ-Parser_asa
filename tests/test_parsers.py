@@ -27,6 +27,7 @@ def get_filepath(which):
         a method to help retrieve test files
         """
     data_dir = pathlib.Path(__file__).resolve().parent.parent / "data"
+
     if which == "fasta":
         return data_dir / "test.fa"
     else:
@@ -53,7 +54,7 @@ def test_FastaParser():
     fasta_file = get_filepath("fasta")
         
     # Create instance of FastaParser        
-    fasta_parser = Fa   staParser(fasta_file)
+    fasta_parser = FastaParser(fasta_file)
     
     # iter over FasterParser object, store sequences
     sequences = []
