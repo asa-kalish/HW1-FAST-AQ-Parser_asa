@@ -28,7 +28,7 @@ def test_FastaParser():
     your FastaParser class and assert that it properly
     reads in the example Fasta File.
     """
-    data_dir = pathlib.Path(__file__).resolve().parent / "data"
+    data_dir = "HW1-FAST-AQ-Parser_asa/tests/data" #pathlib.Path(__file__).resolve().parent / "data"
     fasta_file = data_dir / "test.fa"
 
     # Create instance of FastaParser        
