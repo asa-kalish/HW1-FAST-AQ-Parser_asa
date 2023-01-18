@@ -28,7 +28,7 @@ def test_transcribe():
     Write your unit test for the
     transcribe function here.
     """
-    assert transcribe(SEQ) = "UGACUUGGG"
+    assert transcribe(SEQ) == "UGACUUGGG"
 
 
 def test_reverse_transcribe():
