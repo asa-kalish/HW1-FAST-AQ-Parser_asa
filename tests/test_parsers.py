@@ -26,18 +26,19 @@ def get_filepath(which):
         return data_dir / "test.fa"
     else:
         return data_dir / "test.fq"
+
 def open_fastq_reference():
     f = pathlib.Path(__file__).resolve().parent / "fastq-check.txt"
     with f.open() as f:
         seqs = list(map(lambda l: l.strip().split("|"), f.readlines()))
     return seqs  # will be list of lists with seq, quality that were parsed from the test files using get-seq.sh
 
-
 def open_fasta_reference():
     f = pathlib.Path(__file__).resolve().parent / "fasta-check.txt"
     with f.open() as f:
         seqs = list(map(lambda l: l.strip(), f.readlines()))
     return seqs  # will be a list of seqs, quality that were parsed from the test files using get-seq.sh
+
 
 def test_FastaParser():
     """
@@ -46,18 +47,20 @@ def test_FastaParser():
     your FastaParser class and assert that it properly
     reads in the example Fasta File.
     """
-    #data_dir = "HW1-FAST-AQ-Parser_asa/tests/data/" #pathlib.Path(__file__).resolve().parent / "data"
-    #fasta_file = data_dir + "test.fa"
+# i know that seq0 is TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA
+    groundtruth = "TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA"
     fasta_file = get_filepath("fasta")
         
     # Create instance of FastaParser        
     fasta_parser = FastaParser(fasta_file)
+    
+    transcriptions = []
     for seq_name, seq in fasta_parser:
         print(seq_name, transcribe(seq))
+        transcriptions.append(transcribe(seq))
     # check file type and file content class/type (?)
     
-    # check that a few lines of "test.fa" match whats read
-    assert True
+    assert transcriptions[0] == groundtruth
     # pass
 
 
