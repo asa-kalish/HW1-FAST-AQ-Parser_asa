@@ -5,6 +5,8 @@ from seqparser import (
         reverse_transcribe)
 
 
+SEQ = "ACTGAACCC"
+
 def test_freebie_transcribe_1():
     """
     This one is a freebie
@@ -26,7 +28,7 @@ def test_transcribe():
     Write your unit test for the
     transcribe function here.
     """
-    pass
+    assert transcribe(SEQ) = "UGACUUGGG"
 
 
 def test_reverse_transcribe():
