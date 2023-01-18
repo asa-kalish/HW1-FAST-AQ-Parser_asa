@@ -4,7 +4,7 @@ from seqparser import (transcribe, reverse_transcribe,
         FastaParser,
         FastqParser)
 
-# import pytest
+import pathlib
 def test_freebie_parser_1():
     """
     This one is a freebie
