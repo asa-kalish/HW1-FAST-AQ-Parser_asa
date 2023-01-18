@@ -49,18 +49,17 @@ def test_FastaParser():
     """
 # i know that seq0 is TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA
     groundtruth = "TGATTGAATCTTTTGAGGGTCACGGCCCGGAAGCCAGAATTTCGGGGTCCTCTGTGGATATTAATCGAGCCCACACGGTGTGAGTTCAGCGGCCCCCGCA"
+        
     fasta_file = get_filepath("fasta")
         
     # Create instance of FastaParser        
     fasta_parser = FastaParser(fasta_file)
     
-    transcriptions = []
+    sequences = []
     for seq_name, seq in fasta_parser:
-        print(seq_name, transcribe(seq))
-        transcriptions.append(seq)
-    # check file type and file content class/type (?)
-    
-    assert transcriptions[0] == groundtruth
+        sequences.append(seq)
+            
+    assert sequences[0] == groundtruth
     # pass
 
 
@@ -72,12 +71,18 @@ def test_FastqParser():
     reads in the example Fastq File.
     """
     
+    # ground truth
+    gt = "TGTGGTCGTATAGTTATTGTCATAAATTACACAGAATCGCGATTCTCCGCGTCCACCAATCTTAGTGCACCACAGCATCGACCCGATTTATGACGCTGAG
++
+*540($=*,=.062565,2>'487')!:&&6=,6,*7>:&132&83*8(58&59>'8!;28<94,0*;*.94**:9+7"94(>7='(!5"2/!%"4#32="
+    
+    fastq_file = get_filepath("fastq")
+        
     # Create instance of FastqParser        
-
+    fastq_parser = FastqParser(fastq_file)
     
-    # check file type and file content class/type (?)
-    
-    # check that a few lines of "test.fq" match whats read
-    
-    assert True
-    # pass
+    sequences = []
+    for seq_name, seq in fastq_parser:
+        sequences.append(seq)
+            
+    assert sequences[0] == groundtruth
