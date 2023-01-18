@@ -23,9 +23,6 @@ def test_freebie_parser_2():
 
         
 def get_filepath(which):
-        """
-        a method to help retrieve test files
-        """
     data_dir = pathlib.Path(__file__).resolve().parent.parent / "data"
 
     if which == "fasta":
